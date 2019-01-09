@@ -1,5 +1,6 @@
 var express = require('express');
 var bodyParser = require('body-parser');
+const cors = require('cors');
 const { execFileSync, exec, execSync } = require('child_process');
 
 var app = express();
@@ -15,7 +16,18 @@ app.get('/test', function (req, res) {
     });
 });
 
-app.post('/pretty-curl', function (req, res) {
+var whitelist = ['https://pretty-curl.sanbaofengs.com', 'http://local-pretty-curl.sanbaofengs.com'];
+var corsOptions = {
+    origin: function (origin, callback) {
+        if (whitelist.indexOf(origin) !== -1) {
+            callback(null, true)
+        } else {
+            callback(new Error('Not allowed by CORS'))
+        }
+    }
+}
+
+app.post('/pretty-curl', cors(corsOptions), function (req, res) {
     if (!req.body) return res.sendStatus(400);
     const curlStr = req.body.curlStr;
     if (!curlStr) return res.sendStatus(400);
