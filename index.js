@@ -29,20 +29,6 @@ app.get('/test', function (req, res) {
     });
 });
 
-app.get('/hello-world', function (req, res) {
-    res.json({
-        code: 0,
-        message: 'success',
-        data: JSON.stringify({
-            code: 0,
-            message: 'success',
-            data: {
-                foo: 'hell world~'
-            }
-        })
-    });
-});
-
 app.post('/pretty-curl', function (req, res) {
     if (!req.body) return res.sendStatus(400);
     const curlStr = req.body.curlStr;
