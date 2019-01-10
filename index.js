@@ -1,7 +1,7 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 const cors = require('cors');
-const {exec} = require('child_process');
+const { exec } = require('child_process');
 
 var app = express();
 app.use(bodyParser.json());
@@ -33,13 +33,13 @@ app.get('/hello-world', function (req, res) {
     res.json({
         code: 0,
         message: 'success',
-      data: JSON.stringify({
-        code: 0,
-        message: 'success',
-        data: {
-          foo: 'hell world~'
-        }
-      })
+        data: JSON.stringify({
+            code: 0,
+            message: 'success',
+            data: {
+                foo: 'hell world~'
+            }
+        })
     });
 });
 
