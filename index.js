@@ -6,7 +6,7 @@ const {exec} = require('child_process');
 var app = express();
 app.use(bodyParser.json());
 
-var whitelist = ['https://pretty-curl.sanbaofengs.com', 'http://local-pretty-curl.sanbaofengs.com'];
+var whitelist = ['https://prettycurl.sanbaofengs.com', 'http://local-pretty-curl.sanbaofengs.com'];
 var corsOptions = {
     origin: function (origin, callback) {
         if (whitelist.indexOf(origin) !== -1) {
